@@ -1,0 +1,177 @@
+{
+  "name": "SKK辞書",
+  "scopeName": "text.skkjisyo",
+  "firstLineMatch": "^;; okuri-ari entries.",
+  "patterns": [
+    {
+      "begin": "^;; okuri-ari entries\\.",
+      "beginCaptures": {
+        "0": {
+          "name": "comment.line.skkjisyo"
+        }
+      },
+      "end": "\\n(?=;; okuri-nasi entries\\.)",
+      "name": "okuri-ari.block.skkjisyo",
+      "patterns": [
+        {
+          "include": "#entries"
+        }
+      ]
+    },
+    {
+      "begin": "^;; okuri-nasi entries\\.",
+      "beginCaptures": {
+        "0": {
+          "name": "comment.line.skkjisyo"
+        }
+      },
+      "name": "okuri-nasi.block.skkjisyo",
+      "patterns": [
+        {
+          "include": "#entries"
+        }
+      ]
+    }
+  ],
+  "repository": {
+    "entries": {
+      "patterns": [
+        {
+          "match": "^(;).*$",
+          "captures": {
+            "1": {
+              "name": "punctuation.definition.comment.skkjisyo"
+            }
+          },
+          "name": "comment.line.skkjisyo"
+        },
+        {
+          "begin": "^",
+          "end": "\\s*(?=/)",
+          "contentName": "markup.bold.yomi.entry.skkjisyo",
+          "patterns": [
+            {
+              "match": "[a-z](?=\\s*/)",
+              "name": "okuri.yomi.entry.skkjisyo"
+            },
+            {
+              "match": "^>",
+              "name": "constant.yomi.entry.skkjisyo"
+            },
+            {
+              "match": ">(?=\\s*/)",
+              "name": "constant.yomi.entry.skkjisyo"
+            },
+            {
+              "match": "#",
+              "name": "constant.numeric.yomi.entry.skkjisyo"
+            }
+          ]
+        },
+        {
+          "match": "/(?=\\]|$)",
+          "name": "comment.separator.entry.skkjisyo"
+        },
+        {
+          "begin": "(/)(\\[)([^/]*)(?=/)",
+          "beginCaptures": {
+            "1": {
+              "name": "comment.separator.entry.skkjisyo"
+            },
+            "2": {
+              "name": "keyword.definition.tag.candidate.entry.skkjisyo"
+            }
+          },
+          "end": "\\](?=/)",
+          "endCaptures": {
+            "0": {
+              "name": "keyword.definition.tag.candidate.entry.skkjisyo"
+            }
+          },
+          "name": "subentry.candidate.entry.skkjisyo",
+          "patterns": [
+            {
+              "include": "#entries"
+            }
+          ]
+        },
+        {
+          "begin": "/",
+          "beginCaptures": {
+            "0": {
+              "name": "comment.separator.entry.skkjisyo"
+            }
+          },
+          "end": "(?=/)",
+          "name": "meta.tag.candidate.entry.skkjisyo",
+          "patterns": [
+            {
+              "begin": "\\(skk-ignore-dic-word (\")",
+              "end": "(\")\\)(?=/)"
+            },
+            {
+              "begin": "\\(concat (\")",
+              "end": "(\")\\)(?=/|;)",
+              "name": "meta.function-call.candidate.entry.skkjisyo",
+              "contentName": "meta.tag.candidate.entry.skkjisyo",
+              "patterns": [
+                {
+                  "match": "\\\\\\d+",
+                  "name": "markup.quote.escape.entry.skkjisyo"
+                }
+              ]
+            },
+            {
+              "begin": ";(\\*)?",
+              "beginCaptures": {
+                "0": {
+                  "name": "comment.annotation.entry.skkjisyo"
+                },
+                "1": {
+                  "name": "user.annotation.entry.skkjisyo"
+                }
+              },
+              "end": "(?=/)",
+              "name": "punctuation.definition.string.annotation.entry.skkjisyo",
+              "patterns": [
+                {
+                  "match": ";",
+                  "name": "invalid.char.annotation.entry.skkjisyo"
+                },
+                {
+                  "match": "([∥※†]).*(?=/)",
+                  "captures": {
+                    "1": {
+                      "name": "keyword.annotation.entry.skkjisyo"
+                    }
+                  },
+                  "name": "exclusive.annotation.entry.skkjisyo"
+                },
+                {
+                  "match": "(地名)(,.+)?(?=/)",
+                  "captures": {
+                    "1": {
+                      "name": "keyword.annotation.entry.skkjisyo"
+                    }
+                  }
+                },
+                {
+                  "match": "<rare>|[⇔=≒→]",
+                  "name": "keyword.annotation.entry.skkjisyo"
+                },
+                {
+                  "match": "\\?(?=/)",
+                  "name": "exclusive.keyword.annotation.entry.skkjisyo"
+                }
+              ]
+            },
+            {
+              "match": "#[0-59]",
+              "name": "constant.numeric.yomi.entry.skkjisyo"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
