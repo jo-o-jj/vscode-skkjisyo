@@ -1,45 +1,45 @@
 {
-  "name": "skkjisyo",
-  "version": "0.1.0",
-  "publisher": "jo-o-jj",
-  "engines": {
-    "vscode": "^0.10.1"
-  },
-  "license": "MIT",
-  "displayName": "SKK辞書",
-  "description": "SKK-JISYO Language Support for Visual Studio Code",
-  "categories": [
-    "Languages"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/jo-o-jj/vscode-skkjisyo.git"
-  },
-  "homepage": "https://github.com/jo-o-jj/vscode-skkjisyo",
-  "bugs": {
-    "url": "https://github.com/jo-o-jj/vscode-skkjisyo/issues"
-  },
-  "contributes": {
-    "languages": [
-      {
-        "id": "skkjisyo",
-        "aliases": [
-          "SKK辞書",
-          "SKK-JISYO"
-        ],
-        "filenames": [
-          ".skk-jisyo"
-        ],
-        "firstLine": "^;; okuri-ari entries\\.$",
-        "configuration": "./language-configuration.json"
-      }
+    "name": "skkjisyo",
+    "version": "0.2.0",
+    "publisher": "jo-o-jj",
+    "engines": {
+        "vscode": "^0.10.1"
+    },
+    "license": "MIT",
+    "displayName": "SKK辞書",
+    "description": "SKK-JISYO Language Support for Visual Studio Code",
+    "categories": [
+        "Languages"
     ],
-    "grammars": [
-      {
-        "language": "skkjisyo",
-        "scopeName": "text.skkjisyo",
-        "path": "./syntaxes/skkjisyo.json"
-      }
-    ]
-  }
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/jo-o-jj/vscode-skkjisyo.git"
+    },
+    "homepage": "https://github.com/jo-o-jj/vscode-skkjisyo",
+    "bugs": {
+        "url": "https://github.com/jo-o-jj/vscode-skkjisyo/issues"
+    },
+    "contributes": {
+        "languages": [
+            {
+                "id": "skkjisyo",
+                "aliases": [
+                    "SKK辞書",
+                    "SKK-JISYO"
+                ],
+                "filenames": [
+                    ".skk-jisyo"
+                ],
+                "firstLine": "^;; okuri-ari entries\\.$",
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "skkjisyo",
+                "scopeName": "text.skkjisyo",
+                "path": "./syntaxes/skkjisyo.json"
+            }
+        ]
+    }
 }
