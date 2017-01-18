@@ -41,6 +41,5 @@
         "path": "./syntaxes/skkjisyo.json"
       }
     ]
-  },
-  "private": true
+  }
 }
